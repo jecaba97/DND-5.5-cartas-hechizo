@@ -63,6 +63,13 @@ h1, h2, h3, .form-label {
 #buscadorNombre::placeholder {
     color: rgba(212, 175, 55, 0.6); /* Un toque de oro viejo con transparencia */
 }
+
+.card-hechizo .text-info {
+    color: var(--dnd-gold) !important;
+    font-weight: bold; /* Opcional: para que resalte un poco más */
+    font-family: 'Cinzel', serif; /* Para que use la misma fuente épica que el título */
+}
+
 /* ==========================================
    4. GALERÍA DE CARTAS
    ========================================== */
@@ -134,4 +141,5 @@ h1, h2, h3, .form-label {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
+
 }
