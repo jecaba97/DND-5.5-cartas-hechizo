@@ -11,13 +11,13 @@ const competenciasClase = {
     "Hechicero": ["Constitución", "Carisma"],
     "Bardo": ["Destreza", "Carisma"],
     "Brujo": ["Sabiduría", "Carisma"],
-    
+
     //Clases Semicaster
     "Druida": ["Inteligencia", "Sabiduría"],
     "Clérigo": ["Sabiduría", "Carisma"],
     "Explorador": ["Fuerza", "Destreza"],
     "Paladín": ["Sabiduría", "Carisma"],
-    
+
     // Clases Marciales
     "Barbaro": ["Fuerza", "Constitución"],
     "Guerrero": ["Fuerza", "Constitución"],
@@ -49,7 +49,7 @@ const listaArmasPredefinidas = [
     { nombre: "Lanza", dado1: "1d6", tipoDaño: "Perforante", esVersatil: true, dado2: "1d8", atributo: "Fuerza", esProficiente: true, alcance: "20/60", notas: "Arrojadiza, versátil (1d8)" },
     { nombre: "Martillo ligero", dado1: "1d4", tipoDaño: "Contundente", esVersatil: false, atributo: "Fuerza", esProficiente: true, alcance: "20/60", notas: "Ligera, arrojadiza" },
     { nombre: "Maza", dado1: "1d6", tipoDaño: "Contundente", esVersatil: false, atributo: "Fuerza", esProficiente: true, alcance: "C/C", notas: "-" },
-    
+
     // --- ARMAS SENCILLAS A DISTANCIA ---
     { nombre: "Arco corto", dado1: "1d6", tipoDaño: "Perforante", esVersatil: false, atributo: "Destreza", esProficiente: true, alcance: "80/320", notas: "Munición, a dos manos" },
     { nombre: "Ballesta ligera", dado1: "1d8", tipoDaño: "Perforante", esVersatil: false, atributo: "Destreza", esProficiente: true, alcance: "80/320", notas: "Munición, a 2 manos, recarga" },
@@ -82,7 +82,7 @@ const listaArmasPredefinidas = [
     { nombre: "Cerbatana", dado1: "1", tipoDaño: "Perforante", esVersatil: false, atributo: "Destreza", esProficiente: true, alcance: "7.5/30m", notas: "Munición, recarga" },
     { nombre: "Mosquete", dado1: "1d12", tipoDaño: "Perforante", esVersatil: false, atributo: "Destreza", esProficiente: true, alcance: "12/36m", notas: "A dos manos, munición, recarga" },
     { nombre: "Pistola", dado1: "1d10", tipoDaño: "Perforante", esVersatil: false, atributo: "Destreza", esProficiente: true, alcance: "9/27m", notas: "Munición, recarga" }
-   ];
+];
 
 // Base de datos de hechizos
 
@@ -441,7 +441,7 @@ const hechizos = [
     { id: 329, nombre: "Visión veraz", clase: "Clérigo", nivel: 6, archivo: "/v1772801863/Clerigo_Visi%C3%B3n_veraz_putezm.png" },
     { id: 272, nombre: "Zona de la verdad", clase: "Clérigo", nivel: 2, archivo: "/v1772801865/Clerigo_Zona_de_la_verdad_plrf0x.png" },
 
-   // CONJUROS DE DRUIDA (ORDEN ALFABÉTICO)
+    // CONJUROS DE DRUIDA (ORDEN ALFABÉTICO)
     { id: 420, nombre: "Adivinación", clase: "Druida", nivel: 4, archivo: "/v1772802037/Druida_Adiviniaci%C3%B3n_da6h3v.png" },
     { id: 380, nombre: "Agrandar/reducir", clase: "Druida", nivel: 2, archivo: "/v1772802039/Druida_Agrandar___Reducir_dknsco.png" },
     { id: 472, nombre: "Antipatía/simpatía", clase: "Druida", nivel: 8, archivo: "/v1772802040/Druida_Antipat%C3%ADa_simpat%C3%ADa_vlmkhu.png" },
@@ -577,7 +577,7 @@ const hechizos = [
     { id: 361, nombre: "Voluta estelar", clase: "Druida", nivel: 0, archivo: "/v1772802034/Druida_Voluta_estelar_qhrfrd.png" },
     { id: 379, nombre: "Zancada prodigiosa", clase: "Druida", nivel: 1, archivo: "/v1772802036/Druida_Zancada_prodigiosa_ttdvgu.png" },
 
-// CONJUROS DE EXPLORADOR (ORDEN ALFABÉTICO)
+    // CONJUROS DE EXPLORADOR (ORDEN ALFABÉTICO)
     { id: 484, nombre: "Alarma", clase: "Explorador", nivel: 1, archivo: "/v1772903574/Explorador_Alarma_h8oj31.png" },
     { id: 516, nombre: "Arma elemental", clase: "Explorador", nivel: 3, archivo: "/v1772903574/Explorador_Arma_elemental_j0bg6x.png" },
     { id: 498, nombre: "Arma mágica", clase: "Explorador", nivel: 2, archivo: "/v1772903574/Explorador_Arma_magica_qs334i.png" },
@@ -639,7 +639,7 @@ const hechizos = [
     { id: 496, nombre: "Tormenta de espinas", clase: "Explorador", nivel: 1, archivo: "/v1772903573/Explorador_Tormenta_de_espinas_ujbyvg.png" },
     { id: 515, nombre: "Visión en la oscuridad", clase: "Explorador", nivel: 2, archivo: "/v1772903573/Explorador_Visi%C3%B3n_en_la_oscuridad_badpco.png" },
     { id: 497, nombre: "Zancada prodigiosa", clase: "Explorador", nivel: 1, archivo: "/v1772903573/Explorador_Zancada_prodigiosa_lxtbjq.png" },
-    
+
     // CONJUROS DE HECHICERO (ORDEN ALFABÉTICO)
     { id: 587, nombre: "Abrir", clase: "Hechicero", nivel: 2, archivo: "/v1772903633/Hechicero_Abrir_kn75cp.png" },
     { id: 617, nombre: "Acelerar", clase: "Hechicero", nivel: 3, archivo: "/v1772903634/Hechicero_Acelerar_yxugbz.png" },
@@ -1100,7 +1100,7 @@ let personaje = {
     hpMax: 10,
     hpActual: 10,
     atributos: {
-        Fuerza: 10, Destreza: 10, Constitución: 10, 
+        Fuerza: 10, Destreza: 10, Constitución: 10,
         Inteligencia: 10, Sabiduría: 10, Carisma: 10
     },
     habilidadesProficientes: [],
@@ -1112,10 +1112,10 @@ let personaje = {
 };
 
 // Variables de control de la Interfaz (No se guardan en el JSON)
-let listaActual = []; 
-let indiceActual = 0; 
-let modalBS;          
-let hechizosPorPagina = 20; 
+let listaActual = [];
+let indiceActual = 0;
+let modalBS;
+let hechizosPorPagina = 20;
 let cantidadMostrada = 20;
 let filtroClaseHechizos = 'todos'; // UNIFICADO: Solo usaremos esta para el Grimorio
 
@@ -1125,7 +1125,7 @@ let filtroClaseHechizos = 'todos'; // UNIFICADO: Solo usaremos esta para el Grim
 
 function mostrarSeccion(seccion) {
     const secciones = ['setup', 'roller', 'actions', 'spellbook'];
-    
+
     secciones.forEach(s => {
         document.getElementById(`${s}-section`)?.classList.toggle('d-none', s !== seccion);
         document.getElementById(`btn-nav-${s}`)?.classList.toggle('active', s === seccion);
@@ -1147,7 +1147,7 @@ const acordeonesAbiertos = { setup: {}, roller: {} }; // Mantiene abiertos los d
 function actualizarUI() {
     const rpb = document.getElementById('roller-pb');
     if (rpb) rpb.innerText = '+' + (personaje.pb || 2);
-    
+
     generarAmbosPanelesAtributos();
     generarPanelSlotsSetup(); // Sincroniza los slots al actualizar
     actualizarPestañaAcciones();
@@ -1156,9 +1156,9 @@ function actualizarUI() {
 function generarPanelSlotsSetup() {
     const container = document.getElementById('setup-slots-grid');
     if (!container) return;
-    
+
     if (!personaje.slotsMax) personaje.slotsMax = {};
-    
+
     let html = '';
     for (let i = 1; i <= 9; i++) {
         const max = personaje.slotsMax[i] || 0;
@@ -1191,12 +1191,12 @@ function generarPanelAtributos(modo) {
         const esProficienteSalva = salvacionesClase.includes(attr) || (personaje.salvacionesManuales && personaje.salvacionesManuales.includes(attr));
         const habilidades = mapeoHabilidades[attr] || [];
         const tieneHabilidades = habilidades.length > 0;
-        
+
         const cardAtributo = document.createElement('div');
         cardAtributo.className = 'card-atributo animacion-magica';
-        
+
         // --- DIFERENCIA 1: Checkbox Editable vs Escudo Fijo ---
-        let htmlSalvacion = isSetup 
+        let htmlSalvacion = isSetup
             ? `<input type="checkbox" class="form-check-input check-prof-hab m-0" 
                    id="check-save-${modo}-${attr}" ${esProficienteSalva ? 'checked' : ''}
                    onclick="event.stopPropagation(); toggleSalvacion('${attr}')">`
@@ -1220,14 +1220,14 @@ function generarPanelAtributos(modo) {
                </div>`
             : `<div class="badge bg-dark border border-secondary text-gold d-flex align-items-center justify-content-center" 
                    style="width: 45px; height: 32px; font-size: 1rem;">${modTexto}</div>`;
-        
-                   // --- DIFERENCIA 3: Botón de tirada (Solo en el Roller) ---
+
+        // --- DIFERENCIA 3: Botón de tirada (Solo en el Roller) ---
         let btnDadoAttr = isSetup ? '' : `<button class="btn btn-sm btn-primary py-1 px-2 btn-dice-large" onclick="event.stopPropagation(); lanzarD20('${attr}')">🎲</button>`;
 
         let htmlHabilidades = habilidades.map(hab => {
             const modExtra = (personaje.modificadoresHabilidades && personaje.modificadoresHabilidades[hab]) || 0;
             const esProfHab = personaje.habilidadesProficientes.includes(hab);
-            
+
             let checkHab = isSetup
                 ? `<input type="checkbox" class="form-check-input check-prof-hab m-0" 
                        id="check-${modo}-${hab}" ${esProfHab ? 'checked' : ''}
@@ -1240,7 +1240,7 @@ function generarPanelAtributos(modo) {
                        style="width: 45px; height: 28px; font-weight: bold; font-size: 0.85rem;"
                        onchange="personaje.modificadoresHabilidades['${hab}'] = parseInt(this.value) || 0; actualizarUI();">`
                 : `<div class="badge bg-dark border border-secondary text-gold d-flex align-items-center justify-content-center" 
-                       style="width: 35px; height: 25px; font-size: 0.85rem;">${modExtra >= 0 ? '+'+modExtra : modExtra}</div>`;
+                       style="width: 35px; height: 25px; font-size: 0.85rem;">${modExtra >= 0 ? '+' + modExtra : modExtra}</div>`;
 
             let btnDadoHab = isSetup ? '' : `<button class="btn btn-sm p-0 px-1 text-gold" onclick="event.stopPropagation(); lanzarHabilidad('${hab}', '${attr}')" style="font-size: 1.2rem;">🎲</button>`;
 
@@ -1326,15 +1326,15 @@ function toggleSalvacion(attr) {
 function lanzarD20(attr) {
     const puntuacion = personaje.atributos[attr] || 10;
     const mod = Math.floor((puntuacion - 10) / 2); // Fórmula D&D
-    
+
     // Verificamos si es proficiente por clase o por salvación manual
-    const esProficiente = (competenciasClase[personaje.clase] && competenciasClase[personaje.clase].includes(attr)) || 
-                          (personaje.salvacionesManuales && personaje.salvacionesManuales.includes(attr));
+    const esProficiente = (competenciasClase[personaje.clase] && competenciasClase[personaje.clase].includes(attr)) ||
+        (personaje.salvacionesManuales && personaje.salvacionesManuales.includes(attr));
     const pb = esProficiente ? personaje.pb : 0;
 
     ejecutarTirada(
-        total => total + mod + pb, 
-        `Salvación ${attr}`, 
+        total => total + mod + pb,
+        `Salvación ${attr}`,
         `${mod} (Mod) + ${pb} (PB)`
     );
 }
@@ -1342,15 +1342,15 @@ function lanzarD20(attr) {
 function lanzarHabilidad(hab, attrPadre) {
     const puntuacion = personaje.atributos[attrPadre] || 10;
     const modAttr = Math.floor((puntuacion - 10) / 2); // Fórmula D&D
-    
+
     const esProficiente = personaje.habilidadesProficientes.includes(hab);
     const pb = esProficiente ? personaje.pb : 0;
-    
+
     const modExtra = (personaje.modificadoresHabilidades && personaje.modificadoresHabilidades[hab]) || 0;
 
     ejecutarTirada(
-        total => total + modAttr + pb + modExtra, 
-        hab, 
+        total => total + modAttr + pb + modExtra,
+        hab,
         `${modAttr} (${attrPadre}) + ${pb} (PB) + ${modExtra} (Extra)`
     );
 }
@@ -1358,7 +1358,7 @@ function lanzarHabilidad(hab, attrPadre) {
 function ejecutarTirada(calculoTotal, titulo, infoExtra) {
     const resultDivs = [document.getElementById('dice-result'), document.getElementById('dice-result-actions')];
     const logs = [document.getElementById('roll-log'), document.getElementById('roll-log-actions')];
-    
+
     // Leemos los botones de ventaja de ambas pestañas
     const checkAdv = document.getElementById('check-advantage')?.checked || document.getElementById('check-adv-actions')?.checked;
     const checkDis = document.getElementById('check-disadvantage')?.checked || document.getElementById('check-dis-actions')?.checked;
@@ -1368,7 +1368,7 @@ function ejecutarTirada(calculoTotal, titulo, infoExtra) {
     let dFinal = d1;
     let textoDados = `${d1}`;
 
-    if (checkAdv) { dFinal = Math.max(d1, d2); textoDados = `Mayor de (${d1}, ${d2})`; } 
+    if (checkAdv) { dFinal = Math.max(d1, d2); textoDados = `Mayor de (${d1}, ${d2})`; }
     else if (checkDis) { dFinal = Math.min(d1, d2); textoDados = `Menor de (${d1}, ${d2})`; }
 
     const total = calculoTotal(dFinal);
@@ -1401,7 +1401,7 @@ function ejecutarTirada(calculoTotal, titulo, infoExtra) {
 function limpiarLogTiradas() {
     const logs = [document.getElementById('roll-log'), document.getElementById('roll-log-actions')];
     const results = [document.getElementById('dice-result'), document.getElementById('dice-result-actions')];
-    
+
     logs.forEach(log => { if (log) log.innerHTML = '<p class="text-muted small text-center mt-2">El historial de tiradas aparecerá aquí...</p>'; });
     results.forEach(res => { if (res) { res.innerText = '--'; res.style.color = 'var(--dnd-gold)'; } });
 }
@@ -1413,7 +1413,7 @@ function limpiarLogTiradas() {
 function actualizarPestañaAcciones() {
     const contenedorAtaques = document.getElementById('lista-equipo');
     const panelConjuros = document.getElementById('panel-conjuros-contenido');
-    
+
     // 1. Actualizar CA y HP (Igual que antes)
     const displayCa = document.getElementById('display-ca');
     if (displayCa) displayCa.innerText = `🛡️ ${personaje.ca || 10}`;
@@ -1433,11 +1433,11 @@ function actualizarPestañaAcciones() {
             const modAttr = Math.floor((attrValor - 10) / 2);
             const modAtk = modAttr + (item.esProficiente !== false ? parseInt(personaje.pb || 2) : 0);
             const modDanio = modAttr + (parseInt(item.modDanio) || 0);
-            
+
             const modAtkStr = modAtk >= 0 ? `+${modAtk}` : `${modAtk}`;
             const modDanioStr = modDanio >= 0 ? `+${modDanio}` : `${modDanio}`;
             const dPrinc = item.dado1 || item.daño || "1";
-            
+
             let botonesDaño = `<button class="btn btn-sm btn-danger fw-bold shadow-sm" onclick="lanzarDaño(${index}, false)">Daño (${dPrinc}${modDanioStr}) 🩸</button>`;
             if (item.esVersatil && item.dado2 && item.dado2 !== "-") {
                 botonesDaño += `<button class="btn btn-sm btn-outline-danger fw-bold shadow-sm ms-2" onclick="lanzarDaño(${index}, true)">2 Manos (${item.dado2}${modDanioStr}) 🩸</button>`;
@@ -1464,13 +1464,13 @@ function actualizarPestañaAcciones() {
 
     // 3. Renderizar Grimorio y Slots
     if (panelConjuros) {
-        
+
         // --- NUEVO: CABECERA DE ESTADÍSTICAS MÁGICAS ---
         const attrMagico = personaje.atributoMagico || "Inteligencia";
         const valAttrMagico = personaje.atributos[attrMagico] || 10;
         const modMagico = Math.floor((valAttrMagico - 10) / 2);
         const pbMagico = parseInt(personaje.pb || 2);
-        
+
         const modAtaqueConjuro = modMagico + pbMagico;
         const cdSalvacion = 8 + modMagico + pbMagico;
         const modAtaqueStr = modAtaqueConjuro >= 0 ? `+${modAtaqueConjuro}` : `${modAtaqueConjuro}`;
@@ -1488,12 +1488,12 @@ function actualizarPestañaAcciones() {
                 </div>
             </div>
         `;
-        
+
         panelConjuros.innerHTML = statsMagicosHtml; // Insertamos la cabecera en lugar de vaciarlo a ''
         // -----------------------------------------------
 
         const preparados = hechizos.filter(h => personaje.favoritos.includes(h.id));
-        
+
         // Agrupar conjuros por nivel
         const porNivel = {};
         preparados.forEach(h => {
@@ -1501,8 +1501,8 @@ function actualizarPestañaAcciones() {
             porNivel[h.nivel].push(h);
         });
 
-        if (!personaje.slotsMax) personaje.slotsMax = {1:0};
-        if (!personaje.slotsActuales) personaje.slotsActuales = {1:0};
+        if (!personaje.slotsMax) personaje.slotsMax = { 1: 0 };
+        if (!personaje.slotsActuales) personaje.slotsActuales = { 1: 0 };
 
         // Renderizar del Nivel 0 al 9
         for (let i = 0; i <= 9; i++) {
@@ -1510,11 +1510,11 @@ function actualizarPestañaAcciones() {
             const tieneSlotsDefinidos = (personaje.slotsMax[i] || 0) > 0;
 
             if (tieneConjuros || tieneSlotsDefinidos || (i === 0 && tieneConjuros)) {
-                if (i === 0 && !tieneConjuros) continue; 
-                
+                if (i === 0 && !tieneConjuros) continue;
+
                 const divNivel = document.createElement('div');
                 divNivel.className = 'mb-4 bg-black p-3 rounded border border-secondary shadow-sm';
-                
+
                 // HEADER DEL NIVEL CON GESTOR DE SLOTS (LIMPIO)
                 let headerHtml = `<h4 class="h6 text-gold border-bottom border-secondary pb-2 mb-3 text-uppercase">`;
                 if (i === 0) {
@@ -1535,7 +1535,7 @@ function actualizarPestañaAcciones() {
                             </div>
                         </div></h4>`;
                 }
-                
+
                 // GRID DE CONJUROS
                 let gridHtml = `<div class="row row-cols-2 g-2">`;
                 if (tieneConjuros) {
@@ -1551,7 +1551,7 @@ function actualizarPestañaAcciones() {
                     gridHtml += `<div class="col-12"><p class="text-muted small mb-0 text-center">Sin conjuros preparados de nivel ${i}.</p></div>`;
                 }
                 gridHtml += `</div>`;
-                
+
                 divNivel.innerHTML = headerHtml + gridHtml;
                 panelConjuros.appendChild(divNivel);
             }
@@ -1600,16 +1600,16 @@ function cambiarSlot(nivel, cantidad) {
 function setSlotMax(nivel, valor) {
     if (!personaje.slotsMax) personaje.slotsMax = {};
     if (!personaje.slotsActuales) personaje.slotsActuales = {};
-    
+
     const max = Math.max(0, parseInt(valor) || 0);
     personaje.slotsMax[nivel] = max;
-    
+
     // Si al bajar el máximo, los actuales son mayores, los recortamos
     if ((personaje.slotsActuales[nivel] || 0) > max) {
         personaje.slotsActuales[nivel] = max;
     }
-    
-    actualizarUI(); 
+
+    actualizarUI();
     actualizarPestañaAcciones();
 }
 
@@ -1621,8 +1621,8 @@ function lanzarAtaque(index) {
     const atributo = item.atributo || "Fuerza";
     const puntuacion = personaje.atributos[atributo] || 10;
     const mod = Math.floor((puntuacion - 10) / 2);
-    
-    const pb = (item.esProficiente !== false) ? parseInt(personaje.pb || 2) : 0; 
+
+    const pb = (item.esProficiente !== false) ? parseInt(personaje.pb || 2) : 0;
     const modTexto = pb > 0 ? `${mod} (${atributo}) + ${pb} (PB)` : `${mod} (${atributo})`;
 
     // Usamos la función global de d20 que ya gestiona ventajas
@@ -1662,7 +1662,7 @@ function lanzarDaño(index, esDosManos) {
 function ejecutarTiradaDaño(cantDados, carasDado, modTotal, titulo, infoExtra) {
     const resultDivs = [document.getElementById('dice-result'), document.getElementById('dice-result-actions')];
     const logs = [document.getElementById('roll-log'), document.getElementById('roll-log-actions')];
-    
+
     let sumaDados = 0; let textoDados = [];
 
     if (carasDado > 0) {
@@ -1672,7 +1672,7 @@ function ejecutarTiradaDaño(cantDados, carasDado, modTotal, titulo, infoExtra) 
         }
     } else { sumaDados = cantDados; textoDados.push(cantDados); }
 
-    const totalFinal = Math.max(0, sumaDados + modTotal); 
+    const totalFinal = Math.max(0, sumaDados + modTotal);
 
     resultDivs.forEach(div => {
         if (div) { div.innerText = totalFinal; div.style.color = "var(--dnd-bright-red)"; }
@@ -1683,7 +1683,7 @@ function ejecutarTiradaDaño(cantDados, carasDado, modTotal, titulo, infoExtra) 
             const carasStr = carasDado > 0 ? `d${carasDado}` : "Plano";
             const tiradasStr = carasDado > 0 ? `(${textoDados.join(' + ')})` : `${sumaDados}`;
             const modStr = modTotal >= 0 ? `+ ${modTotal}` : `- ${Math.abs(modTotal)}`;
-            
+
             const entrada = document.createElement('div');
             entrada.className = "border-bottom border-danger border-opacity-50 py-2 animacion-magica";
             entrada.innerHTML = `
@@ -1706,7 +1706,7 @@ function lanzarAtaqueConjuro() {
     const valAttr = personaje.atributos[attr] || 10;
     const mod = Math.floor((valAttr - 10) / 2);
     const pb = parseInt(personaje.pb || 2);
-    
+
     // Usa la función de tirada principal (con ventajas y desventajas sincronizadas)
     ejecutarTirada(total => total + mod + pb, `Ataque Mágico`, `Mod ${attr}: ${mod} + PB: ${pb}`);
 }
@@ -1758,7 +1758,7 @@ function descargarPersonaje() {
     const dlAnchor = document.createElement('a');
     dlAnchor.setAttribute("href", dataStr);
     dlAnchor.setAttribute("download", `${personaje.nombre || 'personaje'}.json`);
-    document.body.appendChild(dlAnchor); 
+    document.body.appendChild(dlAnchor);
     dlAnchor.click();
     document.body.removeChild(dlAnchor);
 }
@@ -1768,10 +1768,10 @@ function cargarPersonaje(event) {
     if (!file) return;
 
     const reader = new FileReader();
-    reader.onload = function(e) {
+    reader.onload = function (e) {
         try {
             const datosCargados = JSON.parse(e.target.result);
-            
+
             personaje = {
                 nombre: "", clase: "Mago", pb: 2, ca: 10, hpMax: 10, hpActual: 10, inspiracion: false,
                 ...datosCargados
@@ -1783,9 +1783,9 @@ function cargarPersonaje(event) {
             personaje.salvacionesManuales = datosCargados.salvacionesManuales || [];
             personaje.equipo = datosCargados.equipo || [];
             personaje.favoritos = datosCargados.favoritos || [];
-            personaje.slotsMax = datosCargados.slotsMax || {1:0};
+            personaje.slotsMax = datosCargados.slotsMax || { 1: 0 };
             personaje.atributoMagico = datosCargados.atributoMagico || "Inteligencia";
-            personaje.slotsActuales = datosCargados.slotsActuales || {1:0};
+            personaje.slotsActuales = datosCargados.slotsActuales || { 1: 0 };
 
             document.getElementById('char-name').value = personaje.nombre;
             document.getElementById('setup-ca').value = personaje.ca;
@@ -1796,17 +1796,17 @@ function cargarPersonaje(event) {
 
 
             localStorage.setItem('hechizosFavoritos', JSON.stringify(personaje.favoritos));
-            
+
             document.querySelectorAll('.btn-clase-roller').forEach(b => {
                 b.classList.toggle('active', b.dataset.clase === personaje.clase);
             });
 
             actualizarTemaWeb();
-            actualizarUI(); 
+            actualizarUI();
             actualizarListaGestionEquipo();
             actualizarIndicadorInspiracion();
-            renderizar(); 
-            
+            renderizar();
+
             alert("¡Héroe cargado con éxito! ⚔️");
         } catch (error) {
             alert("Hubo un error al leer el archivo JSON.");
@@ -1814,14 +1814,14 @@ function cargarPersonaje(event) {
         }
     };
     reader.readAsText(file);
-    event.target.value = ''; 
+    event.target.value = '';
 }
 
 // --- FUNCIONES DE INSPIRACIÓN (Intactas) ---
 function actualizarIndicadorInspiracion() {
     const avisos = [document.getElementById('aviso-inspiracion'), document.getElementById('aviso-inspiracion-actions')];
     avisos.forEach(aviso => { if (aviso) aviso.classList.toggle('d-none', !personaje.inspiracion); });
-    
+
     const checks = [document.getElementById('check-inspiracion'), document.getElementById('check-inspiracion-actions')];
     checks.forEach(check => { if (check) check.checked = personaje.inspiracion; });
 }
@@ -1845,10 +1845,10 @@ function toggleSubmenúEquipo(opción) {
     const contenedorCrear = document.getElementById('contenedor-crear-arma');
     const btnElegir = document.getElementById('btn-elegir-arma');
     const btnCrear = document.getElementById('btn-crear-arma');
-    
+
     btnElegir.classList.remove('active');
     btnCrear.classList.remove('active');
-    
+
     if (opción === 'elegir') {
         contenedorElegir.classList.remove('d-none');
         contenedorCrear.classList.add('d-none');
@@ -1865,7 +1865,7 @@ function agregarArmaPredefinida() {
     const index = select.value;
     if (index === "") { alert("Por favor, selecciona un arma de la lista. 📜"); return; }
 
-    const arma = { ...listaArmasPredefinidas[index], modDanio: 0 }; 
+    const arma = { ...listaArmasPredefinidas[index], modDanio: 0 };
     personaje.equipo.push(arma);
     select.value = "";
     actualizarListaGestionEquipo();
@@ -1888,25 +1888,25 @@ function agregarEquipo() {
         nombre, alcance, atributo, esProficiente, esVersatil, dado1,
         dado2: esVersatil ? dado2 : "-", modDanio, notas, tipoDaño: "Manual"
     });
-    
+
     document.getElementById('eq-nombre').value = '';
     document.getElementById('eq-alcance').value = '';
     document.getElementById('eq-notas').value = '';
     document.getElementById('eq-mod').value = '0';
     document.getElementById('eq-versatil').checked = false;
     document.getElementById('eq-dado2').disabled = true;
-    
+
     actualizarListaGestionEquipo();
 }
 
 function actualizarListaGestionEquipo() {
     const lista = document.getElementById('lista-gestion-equipo');
     if (!lista) return;
-    
+
     lista.innerHTML = personaje.equipo.map((item, i) => {
-        const dPrinc = item.dado1 || item.daño || "1d4"; 
+        const dPrinc = item.dado1 || item.daño || "1d4";
         const dSec = item.esVersatil && item.dado2 && item.dado2 !== "-" ? ` / ${item.dado2}` : "";
-        const iconoProf = item.esProficiente !== false ? "🎯" : ""; 
+        const iconoProf = item.esProficiente !== false ? "🎯" : "";
         const notasDiv = item.notas ? `<br><small class="text-info" style="font-size: 0.7rem;">* ${item.notas}</small>` : "";
         const modDiv = item.modDanio && item.modDanio !== 0 ? ` (+${item.modDanio})` : "";
         const tDañoDiv = item.tipoDaño ? ` [${item.tipoDaño}]` : "";
@@ -1946,20 +1946,20 @@ function renderizar(opcion) {
         const coincideNombre = h.nombre.toLowerCase().includes(buscador.value.toLowerCase());
         const coincideClase = filtroClaseHechizos === 'todos' || h.clase === filtroClaseHechizos;
         const coincideNivel = h.nivel >= min && h.nivel <= max;
-        
+
         // CORRECCIÓN: Usar personaje.favoritos
         const coincideFav = !document.getElementById('filtroFavoritos').checked || personaje.favoritos.includes(h.id);
-        
+
         return coincideNombre && coincideClase && coincideNivel && coincideFav;
     });
 
     // ORDENACIÓN
     const criterio = document.getElementById('ordenarPor')?.value;
-    listaActual.sort((a,b) => (criterio === 'nivelAsc' ? a.nivel - b.nivel : a.nombre.localeCompare(b.nombre)));
+    listaActual.sort((a, b) => (criterio === 'nivelAsc' ? a.nivel - b.nivel : a.nombre.localeCompare(b.nombre)));
 
     // DIBUJADO
     const fragmento = listaActual.slice(esCargaMas ? cantidadMostrada : 0, esCargaMas ? cantidadMostrada + hechizosPorPagina : cantidadMostrada);
-    
+
     fragmento.forEach((h, i) => {
         const indexReal = esCargaMas ? cantidadMostrada + i : i;
         const esFav = personaje.favoritos.includes(h.id);
@@ -2023,7 +2023,7 @@ function abrirModalPorId(id) {
     const index = hechizos.findIndex(h => h.id === id);
     if (index !== -1) { listaActual = hechizos; abrirModal(index); }
 }
-function actualizarImagenModal() { 
+function actualizarImagenModal() {
     const h = listaActual[indiceActual];
     const img = document.getElementById('imgModal');
     img.src = (h.archivo.startsWith('http') ? h.archivo : CLOUDINARY_BASE + h.archivo).replace('w_400', 'w_1080');
@@ -2058,22 +2058,22 @@ function actualizarSliderVisual() {
 
     track.style.left = minP + "%";
     track.style.width = (maxP - minP) + "%";
-    
+
     if (texto) texto.innerText = `${minVal} - ${maxVal}`;
 }
 
 // FUNCIÓN ÚNICA PARA EL TEMA VISUAL
 function actualizarTemaWeb() {
     // 1. Limpiar todos los temas anteriores del body
-    document.body.classList.forEach(c => { 
-        if (c.startsWith('tema-')) document.body.classList.remove(c); 
+    document.body.classList.forEach(c => {
+        if (c.startsWith('tema-')) document.body.classList.remove(c);
     });
 
     // 2. Decidir qué clase manda:
     // Si estamos en el Grimorio y hay un filtro puesto, manda el filtro.
     // Si no, manda la clase de tu personaje.
     let claseParaTema = personaje.clase;
-    
+
     // Comprobamos si la sección del grimorio es la que está visible
     const spellbookSec = document.getElementById('spellbook-section');
     if (spellbookSec && !spellbookSec.classList.contains('d-none') && filtroClaseHechizos !== 'todos') {
@@ -2085,18 +2085,41 @@ function actualizarTemaWeb() {
     document.body.classList.add(`tema-${temaFormateado}`);
 }
 // ==========================================
-// 9. INICIALIZACIÓN Y EVENTOS
+// 9. VISTA DE GALERÍA MÓVIL
+// ==========================================
+function cambiarVistaGrid(columnas) {
+    const galeria = document.getElementById('galeria');
+    const btn1 = document.getElementById('btn-vista-1');
+    const btn2 = document.getElementById('btn-vista-2');
+    
+    if (!galeria) return;
+
+    if (columnas === 1) {
+        galeria.classList.remove('row-cols-2');
+        galeria.classList.add('row-cols-1');
+        btn1.classList.add('active');
+        btn2.classList.remove('active');
+    } else {
+        galeria.classList.remove('row-cols-1');
+        galeria.classList.add('row-cols-2');
+        btn1.classList.remove('active');
+        btn2.classList.add('active');
+    }
+}
+
+// ==========================================
+// 10. INICIALIZACIÓN Y EVENTOS
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
     modalBS = new bootstrap.Modal(document.getElementById('modalHechizo'));
-    
+
     // Inicialización
     mostrarSeccion('setup');
     actualizarSliderVisual();
     actualizarUI();
     renderizar();
-    actualizarIndicadorInspiracion();   
+    actualizarIndicadorInspiracion();
     cargarOpcionesArmasPredefinidas();
 
     // EVENTOS DE FILTRO DE HECHIZOS (GRIMORIO)
@@ -2120,27 +2143,27 @@ document.addEventListener('DOMContentLoaded', () => {
         if (confirm("¿Seguro que quieres borrar todos tus hechizos preparados? 📕")) {
             // 1. Limpiar el array dentro del objeto personaje
             personaje.favoritos = [];
-            
+
             // 2. Sincronizar con el almacenamiento local
             localStorage.setItem('hechizosFavoritos', JSON.stringify(personaje.favoritos));
-            
+
             // 3. Refrescar la interfaz
             renderizar();
             actualizarPestañaAcciones(); // Para que también se borren de la pestaña de combate
         }
     });
 
-   // Eventos de Clase de Personaje (Roller y Setup)
+    // Eventos de Clase de Personaje (Roller y Setup)
     document.querySelectorAll('.btn-clase-roller').forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.btn-clase-roller').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            
+
             personaje.clase = btn.dataset.clase;
-            
+
             // REINICIAR salvaciones manuales para que coincidan con la nueva clase por defecto
-            personaje.salvacionesManuales = []; 
-            
+            personaje.salvacionesManuales = [];
+
             actualizarTemaWeb(); // Usar la función unificada que arreglamos antes
             actualizarUI();
         });
@@ -2161,19 +2184,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Botón de Ver Preparados
     document.getElementById('filtroFavoritos').addEventListener('change', () => renderizar());
 
-   // --- SINCRONIZACIÓN MAGISTRAL DE VENTAJA Y DESVENTAJA ---
+    // --- SINCRONIZACIÓN MAGISTRAL DE VENTAJA Y DESVENTAJA ---
     const adv1 = document.getElementById('check-advantage');
     const dis1 = document.getElementById('check-disadvantage');
     const adv2 = document.getElementById('check-adv-actions');
     const dis2 = document.getElementById('check-dis-actions');
 
     function syncChecks(origen, destino, rival1, rival2) {
-        if(origen) {
+        if (origen) {
             origen.addEventListener('change', () => {
-                if(destino) destino.checked = origen.checked; // Copia el estado a la otra pestaña
-                if(origen.checked) {
-                    if(rival1) rival1.checked = false;        // Apaga la desventaja si pones ventaja
-                    if(rival2) rival2.checked = false;
+                if (destino) destino.checked = origen.checked; // Copia el estado a la otra pestaña
+                if (origen.checked) {
+                    if (rival1) rival1.checked = false;        // Apaga la desventaja si pones ventaja
+                    if (rival2) rival2.checked = false;
                 }
             });
         }
@@ -2183,36 +2206,36 @@ document.addEventListener('DOMContentLoaded', () => {
     syncChecks(adv2, adv1, dis1, dis2);
     syncChecks(dis1, dis2, adv1, adv2);
     syncChecks(dis2, dis1, adv1, adv2);
-    
+
     // Eventos Limpiar Log Sincronizados
     document.getElementById('btn-limpiar-log')?.addEventListener('click', limpiarLogTiradas);
     document.getElementById('btn-limpiar-log-actions')?.addEventListener('click', limpiarLogTiradas);
-    
+
     // Evento Botón Buscador Nombre Hechizos
     document.getElementById('buscadorNombre').addEventListener('input', () => renderizar());
-    
+
     // EVENTOS DE LOS DESLIZADORES DE NIVEL
     const minIn = document.getElementById('nivelMin');
     const maxIn = document.getElementById('nivelMax');
 
     if (minIn && maxIn) {
-        minIn.addEventListener('input', () => { 
-            actualizarSliderVisual(); 
-            renderizar(); 
+        minIn.addEventListener('input', () => {
+            actualizarSliderVisual();
+            renderizar();
         });
-        maxIn.addEventListener('input', () => { 
-            actualizarSliderVisual(); 
-            renderizar(); 
+        maxIn.addEventListener('input', () => {
+            actualizarSliderVisual();
+            renderizar();
         });
     }
-    
+
     // Evento Botón Cargar Más
-    document.getElementById('btnCargarMas').onclick = () => { 
-        cantidadMostrada += hechizosPorPagina; 
-        renderizar(true); 
+    document.getElementById('btnCargarMas').onclick = () => {
+        cantidadMostrada += hechizosPorPagina;
+        renderizar(true);
     };
 
-// Evento Limpiar Filtros
+    // Evento Limpiar Filtros
     document.getElementById('btnLimpiar').addEventListener('click', () => {
         document.getElementById('buscadorNombre').value = '';
         document.getElementById('nivelMin').value = 0;
@@ -2220,14 +2243,14 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('filtroFavoritos').checked = false;
         document.getElementById('ordenarPor').value = 'nombreAsc';
 
-        filtroClaseHechizos = 'todos'; 
-        
+        filtroClaseHechizos = 'todos';
+
         document.querySelectorAll('.btn-clase').forEach(b => b.classList.remove('active'));
         document.querySelector('[data-clase="todos"]')?.classList.add('active');
-        
+
         actualizarSliderVisual();
-        actualizarTemaWeb(); 
-        renderizar(); 
+        actualizarTemaWeb();
+        renderizar();
     });
 
 }); // <-- ESTA DEBE SER RIGUROSAMENTE LA ÚLTIMA LÍNEA DE TU ARCHIVO. NO PUEDE HABER NADA DEBAJO.
