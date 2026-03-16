@@ -265,6 +265,13 @@ h1, h2, h3, .form-label {
     color: var(--dnd-black) !important;
 }
 
+@media (max-width: 450px) {
+    .btn-dice-large {
+        padding: 4px 8px !important;
+        font-size: 1rem !important;
+    }
+}
+
 /* Estilo para los inputs de mod extra dentro del acordeón */
 .skills-accordion input[type="number"] {
     border-radius: 4px;
