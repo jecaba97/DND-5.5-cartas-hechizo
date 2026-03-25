@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GrimoriuM - D&D5.5 </title>
+    <title>Dumbos & Dragons - D&D5.5 </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,22 +18,125 @@
 <body class="bg-dark text-light">
 
     <div class="container py-4">
-        <h1 class="text-center mb-4">GrimoriouM</h1>
+        <h1 class="text-center mb-4">Dumbos & Dragons</h1>
 
-        <nav class="d-flex justify-content-center flex-wrap gap-2 mb-4">
-            <button id="btn-nav-setup" class="btn btn-outline-gold active" onclick="mostrarSeccion('setup')">👤
-                Personaje</button>
-            <button id="btn-nav-roller" class="btn btn-outline-gold" onclick="mostrarSeccion('roller')">🎲
-                Tiradas</button>
-            <button id="btn-nav-actions" class="btn btn-outline-gold" onclick="mostrarSeccion('actions')">⚔️
-                Combate</button>
-            <button id="btn-nav-spellbook" class="btn btn-outline-gold" onclick="mostrarSeccion('spellbook')">📖
-                Grimorio</button>
-        </nav>
+        <!-- NUEVAS PANTALLAS SPA -->
+
+        <!-- PANTALLA 1: HOME -->
+        <div id="pantalla-home" class="pantalla text-center">
+            <h2 class="mb-4 text-gold">¡Bienvenido, aventurero!</h2>
+            <button class="btn btn-primary btn-lg px-5 py-3 fs-4 fw-bold shadow"
+                onclick="cambiarPantalla('pantalla-registro')">Entrar</button>
+        </div>
+
+        <!-- PANTALLA 2: REGISTRO / LOGIN -->
+        <div id="pantalla-registro" class="pantalla d-none text-center">
+            <div class="bg-secondary p-4 rounded shadow mx-auto"
+                style="max-width: 400px; border: 1px solid var(--dnd-gold);">
+                <h3 class="text-gold mb-4" style="font-family: 'Cinzel';">Acceso al Reino</h3>
+
+                <!-- Pestañas -->
+                <ul class="nav nav-tabs custom-login-tabs justify-content-center mb-4 d-flex border-secondary"
+                    id="loginTabs" role="tablist">
+                    <li class="nav-item flex-fill" role="presentation">
+                        <button class="nav-link active w-100 fw-bold" id="tab-login" data-bs-toggle="tab"
+                            data-bs-target="#pane-login" type="button" role="tab"
+                            onclick="document.getElementById('login-error').classList.add('d-none')">Acceso</button>
+                    </li>
+                    <li class="nav-item flex-fill" role="presentation">
+                        <button class="nav-link w-100 fw-bold" id="tab-registro" data-bs-toggle="tab"
+                            data-bs-target="#pane-registro" type="button" role="tab"
+                            onclick="document.getElementById('login-error').classList.add('d-none')">Registro</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="loginTabsContent">
+                    <!-- Tab Acceso -->
+                    <div class="tab-pane fade show active" id="pane-login" role="tabpanel">
+                        <input type="text" id="login-user-login" class="form-control mb-3 text-center"
+                            placeholder="Usuario">
+                        <input type="password" id="login-pass-login" class="form-control mb-3 text-center"
+                            placeholder="Contraseña">
+                        <button class="btn btn-success w-100 fw-bold mb-2" onclick="iniciarSesion()">Iniciar
+                            Sesión</button>
+                    </div>
+                    <!-- Tab Registro -->
+                    <div class="tab-pane fade" id="pane-registro" role="tabpanel">
+                        <input type="text" id="login-user-reg" class="form-control mb-3 text-center"
+                            placeholder="Nuevo Usuario">
+                        <input type="password" id="login-pass-reg" class="form-control mb-3 text-center"
+                            placeholder="Nueva Contraseña">
+                        <button class="btn btn-info w-100 fw-bold mb-2" onclick="registrarNuevoUsuario()">Crear
+                            Cuenta</button>
+                    </div>
+                </div>
+
+                <div id="login-error" class="text-danger small fw-bold mt-2 mb-2 d-none"></div>
+                <button class="btn btn-outline-light w-100 mt-2" onclick="cambiarPantalla('pantalla-home')">Volver al
+                    Inicio</button>
+            </div>
+        </div>
+
+        <!-- PANTALLA 3: MENÚ PRINCIPAL -->
+        <div id="pantalla-menu" class="pantalla d-none text-center">
+            <h2 class="text-gold mb-4" style="font-family: 'Cinzel';">Menú Principal</h2>
+            <div class="d-flex flex-column gap-3 mx-auto" style="max-width: 300px;">
+                <button class="btn btn-lg btn-outline-gold" onclick="cambiarPantalla('pantalla-gestion')">👤 Gestión de
+                    Personajes</button>
+                <button class="btn btn-lg btn-outline-secondary" disabled>⚙️ Ajustes (Próximamente)</button>
+                <button class="btn btn-lg btn-outline-danger mt-4" onclick="cerrarSesion()">Cerrar Sesión</button>
+            </div>
+        </div>
+
+        <!-- PANTALLA 4: GESTIÓN DE PERSONAJES -->
+        <div id="pantalla-gestion" class="pantalla d-none text-center">
+            <h2 class="text-gold mb-4" style="font-family: 'Cinzel';">Tus Personajes</h2>
+            <div class="row g-4 justify-content-center mb-4">
+                <div class="col-md-5">
+                    <div class="bg-secondary p-4 rounded shadow border border-gold cursor-pointer slot-personaje text-start position-relative"
+                        onclick="abrirModalPersonaje()" style="cursor: pointer;">
+                        <span class="badge bg-gold text-dark position-absolute top-0 end-0 m-2">Nvl. 1</span>
+                        <h4 class="text-gold mb-1" id="slot-1-nombre">Melf el Sabio</h4>
+                        <p class="text-white small mb-0">Mago Humano</p>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="bg-dark p-4 rounded shadow border border-secondary cursor-pointer slot-personaje d-flex align-items-center justify-content-center"
+                        onclick="cambiarPantalla('pantalla-edicion')" style="cursor: pointer; min-height: 104px;">
+                        <h5 class="text-muted mb-0">+ Crear Personaje</h5>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-outline-light" onclick="cambiarPantalla('pantalla-menu')">Volver al Menú</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="modalAccionPersonaje" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content bg-dark border-gold">
+                        <div class="modal-header border-bottom border-secondary">
+                            <h5 class="modal-title text-gold" style="font-family: 'Cinzel';">¿Qué deseas hacer?</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex gap-3 justify-content-center flex-wrap">
+                            <button class="btn btn-outline-info" onclick="cerrarModalYIr('pantalla-edicion')">✏️ Editar
+                                Personaje</button>
+                            <button class="btn btn-success fw-bold" onclick="cerrarModalYIr('pantalla-partida')">⚔️
+                                Jugar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- CREADOR DE PERSONAJES -->
 
-        <section id="setup-section">
+        <!-- PANTALLA 5: EDICIÓN -->
+        <section id="pantalla-edicion" class="pantalla d-none">
+            <div class="mb-3 border-bottom border-secondary pb-2">
+                <button class="btn btn-sm btn-outline-light" onclick="cambiarPantalla('pantalla-gestion')">⬅ Volver a
+                    Gestión</button>
+            </div>
             <div class="row g-3 mb-4 bg-secondary p-4 rounded align-items-center shadow">
 
                 <!-- SELECTOR DE CLASE -->
@@ -65,33 +168,74 @@
                 </div>
 
                 <!-- CARACTERÍSTICAS -->
+                <div class="col-12 d-flex flex-column align-items-center mb-3">
+                    <label for="char-avatar-upload" style="cursor: pointer;" title="Sube un Avatar">
+                        <div id="char-avatar-preview" class="d-flex align-items-center justify-content-center bg-dark border border-gold shadow-sm text-muted rounded-circle" style="width: 100px; height: 100px; overflow: hidden; font-size: 3rem;">
+                            👤
+                        </div>
+                    </label>
+                    <small class="text-muted mt-2">Avatar de personaje</small>
+                    <input type="file" id="char-avatar-upload" class="d-none" accept="image/*" onchange="cargarAvatar(event)">
+                </div>
 
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <label class="form-label small fw-bold mb-1">NOMBRE</label>
-                    <input type="text" id="char-name" class="form-control" placeholder="Ej: Melf el Sabio"
-                        onchange="personaje.nombre = this.value">
+                    <input type="text" id="char-name" class="form-control form-control-sm"
+                        placeholder="Ej: Melf el Sabio" onchange="personaje.nombre = this.value">
                 </div>
-                <div class="col-md-2">
-                    <label class="form-label small fw-bold mb-1">COMPETENCIA</label>
-                    <input type="number" id="setup-pb" class="form-control text-center text-warning fw-bold" value="2"
-                        min="2" max="6" onchange="personaje.pb = parseInt(this.value); actualizarUI();">
+                <div class="col-md-4">
+                    <label class="form-label small fw-bold mb-1 d-block">ESPECIE</label>
+                    <input type="text" id="char-species" class="form-control form-control-sm"
+                        placeholder="Ej: Elfo, Humano..." onchange="personaje.especie = this.value">
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-4">
+                    <label class="form-label small fw-bold mb-1 d-block">TRASFONDO</label>
+                    <input type="text" id="char-background" class="form-control form-control-sm"
+                        placeholder="Ej: Acólito, Criminal..." onchange="personaje.trasfondo = this.value">
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <label class="form-label small fw-bold mb-1">NIVEL</label>
+                    <input type="number" id="setup-nivel" class="form-control form-control-sm text-center fw-bold"
+                        value="1" min="1" max="20"
+                        onchange="personaje.nivel = parseInt(this.value); personaje.hitDiceMax = parseInt(this.value); sugerirEstadisticasBase(); actualizarPestañaAcciones();">
+                </div>
+                <div class="col-6 col-md-3">
+                    <label class="form-label small fw-bold mb-1 text-warning">BONO COMP.</label>
+                    <input type="number" id="setup-pb"
+                        class="form-control form-control-sm text-center text-warning fw-bold border-warning" value="2"
+                        min="2" max="6" onchange="personaje.pb = parseInt(this.value);">
+                </div>
+                <div class="col-4 col-md-2">
                     <label class="form-label small fw-bold mb-1 text-info">CA 🛡️</label>
-                    <input type="number" id="setup-ca" class="form-control text-center text-info fw-bold border-info"
-                        value="10" min="1" max="30"
-                        onchange="personaje.ca = parseInt(this.value); actualizarPestañaAcciones();">
+                    <input type="number" id="setup-ca"
+                        class="form-control form-control-sm text-center text-info fw-bold border-info" value="10"
+                        min="1" max="30"
+                        onchange="personaje.caManual = true; personaje.ca = parseInt(this.value); actualizarPestañaAcciones();">
                 </div>
-                <div class="col-md-2">
-                    <label class="form-label small fw-bold mb-1 text-danger">HP MAX ❤️</label>
+                <div class="col-4 col-md-2">
+                    <label class="form-label small fw-bold mb-1 text-danger">HP MAX</label>
                     <input type="number" id="setup-hp-max"
-                        class="form-control text-center text-danger fw-bold border-danger" value="10" min="1"
-                        onchange="personaje.hpMax = parseInt(this.value); siHpSuperaMaximo(); actualizarPestañaAcciones();">
+                        class="form-control form-control-sm text-center text-danger fw-bold border-danger" value="10"
+                        min="1"
+                        onchange="personaje.hpManual = true; personaje.hpMax = parseInt(this.value); siHpSuperaMaximo(); actualizarPestañaAcciones();">
                 </div>
-                <div class="col-md-3 d-flex flex-column gap-2 mt-4">
-                    <button class="btn btn-info btn-sm w-100 fw-bold" onclick="descargarPersonaje()">Guardar 💾</button>
-                    <label class="btn btn-warning btn-sm w-100 mb-0 fw-bold">
-                        Cargar 📂 <input type="file" hidden onchange="cargarPersonaje(event)" accept=".json">
+                <div class="col-4 col-md-2">
+                    <label class="form-label small fw-bold mb-1 text-danger">HP ACTUAL</label>
+                    <input type="number" id="setup-hp-actual"
+                        class="form-control form-control-sm text-center text-danger fw-bold border-danger" value="10"
+                        onchange="personaje.hpActual = parseInt(this.value); actualizarPestañaAcciones();">
+                </div>
+                <!-- Botones de Guardado y DB -->
+                <div class="col-md-12 d-flex flex-row justify-content-end gap-2 mt-4">
+                    <button class="btn btn-warning btn-sm fw-bold w-100" onclick="resetearStatsAuto()">Restaurar CA/HP
+                        🎲</button>
+                    <button id="btn-guardar-db" class="btn btn-success btn-sm fw-bold w-100"
+                        onclick="guardarPersonajeBD()">Guardar Cuenta 💾</button>
+                    <button class="btn btn-info btn-sm fw-bold w-100" onclick="descargarPersonaje()">Exportar
+                        JSON</button>
+                    <label class="btn btn-dark border-light btn-sm fw-bold mb-0 w-100">
+                        Cargar JSON <input type="file" hidden onchange="cargarPersonaje(event)" accept=".json">
                     </label>
                 </div>
             </div>
@@ -99,10 +243,13 @@
             <!-- ATRIBUTOS Y HABILIDADES -->
 
             <div class="row g-3 mb-4 bg-secondary p-4 rounded shadow border-left-clase">
-                <h3 class="h5 text-gold border-bottom border-gold pb-2">ATRIBUTOS Y HABILIDADES</h3>
-                <p class="text-muted small mb-3">Ajusta los valores base y marca las casillas para añadir tu bono de
-                    competencia. Los cambios se bloquearán y aplicarán en la pestaña de tiradas automáticamente.</p>
-                <div id="setup-stats-grid" class="d-grid gap-3 stats-grid-responsive">
+                <h3 class="h5 text-gold border-bottom border-gold pb-2" style="cursor:pointer" data-bs-toggle="collapse"
+                    data-bs-target="#colapso-atributos">ATRIBUTOS Y HABILIDADES ▼</h3>
+                <div id="colapso-atributos" class="collapse show w-100">
+                    <p class="text-muted small mb-3">Ajusta los valores base y marca las casillas para añadir tu bono de
+                        competencia. Los cambios se bloquearán y aplicarán en la pestaña de tiradas automáticamente.</p>
+                    <div id="setup-stats-grid" class="d-grid gap-3 stats-grid-responsive">
+                    </div>
                 </div>
             </div>
 
@@ -110,9 +257,11 @@
 
             <div class="row g-3 mb-4 bg-secondary p-4 rounded shadow border-left-clase">
                 <div
-                    class="d-flex flex-wrap justify-content-between align-items-center border-bottom border-gold pb-2 mb-3 w-100">
-                    <h3 class="h5 text-gold m-0" style="display:flex; align-items:center;">MAGIA Y SLOTS ✨</h3>
-                    <div class="d-flex align-items-center gap-2 mt-2 mt-sm-0">
+                    class="d-flex flex-column flex-sm-row justify-content-between align-items-center border-bottom border-gold pb-2 mb-3 w-100 gap-3">
+                    <h3 class="h5 text-gold m-0 text-center" style="display:flex; align-items:center; cursor:pointer;"
+                        data-bs-toggle="collapse" data-bs-target="#colapso-conjuros">SLOTS DE CONJURO ▼
+                    </h3>
+                    <div class="d-flex align-items-center justify-content-center gap-2">
                         <label class="form-label small m-0 text-muted text-nowrap">Aptitud:</label>
                         <select id="setup-attr-magico"
                             class="form-select form-select-sm bg-dark text-gold border-secondary"
@@ -124,172 +273,151 @@
                         </select>
                     </div>
                 </div>
-                <p class="text-muted small mb-3 text-center w-100">Configura tus slots y tu atributo mágico. Estos datos
-                    calcularán tus ataques en la pestaña de Combate.</p>
-                <div id="setup-slots-grid" class="d-flex flex-wrap justify-content-center gap-2 w-100">
+                <div id="colapso-conjuros" class="collapse show w-100">
+                    <p class="text-muted small mb-3 text-center w-100">Configura tus slots y tu atributo mágico. Estos
+                        datos
+                        calcularán tus ataques en la pestaña de Combate.</p>
+                    <div id="setup-slots-grid" class="d-flex flex-wrap justify-content-center gap-2 w-100">
+                    </div>
                 </div>
             </div>
 
             <!-- GESTIÓN DE EQUIPO -->
 
             <div class="row g-3 mb-4 bg-secondary p-4 rounded shadow border-left-clase">
-                <h3 class="h5 text-gold border-bottom border-gold pb-2 w-100">ARMAMENTO Y EQUIPO ⚔️</h3>
+                <h3 class="h5 text-gold border-bottom border-gold pb-2 w-100" style="cursor:pointer;"
+                    data-bs-toggle="collapse" data-bs-target="#colapso-equipo">ARMAMENTO Y EQUIPO ⚔️ ▼</h3>
 
-                <div class="col-md-12 d-flex justify-content-center gap-2 mb-4">
-                    <button class="btn btn-outline-light btn-sm fw-bold active" id="btn-elegir-arma"
-                        onclick="toggleSubmenúEquipo('elegir')">Elegir Arma Predefinida 📜</button>
-                    <button class="btn btn-outline-light btn-sm fw-bold" id="btn-crear-arma"
-                        onclick="toggleSubmenúEquipo('crear')">Crear Arma Nueva 🛠️</button>
-                </div>
-
-                <div id="contenedor-elegir-arma" class="row g-2 align-items-end mb-2 w-100">
-                    <div class="col-md-8">
-                        <label class="form-label small mb-1 text-muted">Armas de Clase</label>
-                        <select id="select-armas-predefinidas" class="form-select form-select-sm">
-                            <option value="" disabled selected>Selecciona un arma...</option>
-                        </select>
+                <div id="colapso-equipo" class="collapse show w-100">
+                    <div class="col-md-12 d-flex justify-content-center gap-2 mb-4">
+                        <button class="btn btn-outline-light btn-sm fw-bold active" id="btn-elegir-arma"
+                            onclick="toggleSubmenúEquipo('elegir')">Elegir Arma 📜</button>
+                        <button class="btn btn-outline-light btn-sm fw-bold" id="btn-crear-arma"
+                            onclick="toggleSubmenúEquipo('crear')">Crear Arma Nueva 🛠️</button>
                     </div>
-                    <div class="col-md-4">
-                        <button class="btn btn-sm btn-success w-100 fw-bold pb-2 pt-2"
-                            onclick="agregarArmaPredefinida()">Añadir Arma</button>
-                    </div>
-                </div>
 
-                <div id="contenedor-crear-arma" class="d-none row w-100 p-0 m-0">
-                    <div class="row g-2 mb-2 align-items-end p-0">
-                        <div class="col-md-3">
-                            <label class="form-label small mb-1 text-muted">Nombre</label>
-                            <input type="text" id="eq-nombre" class="form-control form-control-sm"
-                                placeholder="Ej: Espada Larga">
-                        </div>
-                        <div class="col-md-2">
-                            <label class="form-label small mb-1 text-muted">Alcance</label>
-                            <input type="text" id="eq-alcance" class="form-control form-control-sm"
-                                placeholder="Ej: 1.5m / 5ft">
-                        </div>
-                        <div class="col-md-2">
-                            <label class="form-label small mb-1 text-muted">Atributo</label>
-                            <select id="eq-attr" class="form-select form-select-sm">
-                                <option value="Fuerza">Fuerza</option>
-                                <option value="Destreza">Destreza</option>
-                                <option value="Inteligencia">Inteligencia</option>
-                                <option value="Sabiduría">Sabiduría</option>
-                                <option value="Carisma">Carisma</option>
+                    <div id="contenedor-elegir-arma" class="row g-2 align-items-end mb-2 w-100">
+                        <div class="col-md-8">
+                            <label class="form-label small mb-1 text-muted">Armas</label>
+                            <select id="select-armas-predefinidas" class="form-select form-select-sm">
+                                <option value="" disabled selected>Selecciona un arma...</option>
                             </select>
                         </div>
-                        <div class="col-md-2 d-flex justify-content-center gap-3">
-                            <div class="form-check form-switch pt-4">
-                                <input class="form-check-input" type="checkbox" id="eq-proficiente" checked>
-                                <label class="form-check-label small fw-bold" for="eq-proficiente"
-                                    title="Eres competente">Prof.</label>
+                        <div class="col-md-4">
+                            <button class="btn btn-sm btn-success w-100 fw-bold pb-2 pt-2"
+                                onclick="agregarArmaPredefinida()">Añadir Arma</button>
+                        </div>
+                    </div>
+
+                    <div id="contenedor-crear-arma" class="d-none row w-100 p-0 m-0">
+                        <div class="row g-2 mb-2 align-items-end p-0">
+                            <div class="col-md-3">
+                                <label class="form-label small mb-1 text-muted">Nombre</label>
+                                <input type="text" id="eq-nombre" class="form-control form-control-sm"
+                                    placeholder="Ej: Espada Larga">
                             </div>
-                            <div class="form-check form-switch pt-4">
-                                <input class="form-check-input" type="checkbox" id="eq-versatil"
-                                    onchange="document.getElementById('eq-dado2').disabled = !this.checked">
-                                <label class="form-check-label small fw-bold" for="eq-versatil"
-                                    title="Se puede usar a 2 manos">Versátil</label>
+                            <div class="col-md-2">
+                                <label class="form-label small mb-1 text-muted">Alcance</label>
+                                <input type="text" id="eq-alcance" class="form-control form-control-sm"
+                                    placeholder="Ej: 1.5m / 5ft">
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label small mb-1 text-muted">Atributo</label>
+                                <select id="eq-attr" class="form-select form-select-sm">
+                                    <option value="Fuerza">Fuerza</option>
+                                    <option value="Destreza">Destreza</option>
+                                    <option value="Inteligencia">Inteligencia</option>
+                                    <option value="Sabiduría">Sabiduría</option>
+                                    <option value="Carisma">Carisma</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 d-flex justify-content-center gap-3">
+                                <div class="form-check form-switch pt-4">
+                                    <input class="form-check-input" type="checkbox" id="eq-proficiente" checked>
+                                    <label class="form-check-label small fw-bold" for="eq-proficiente"
+                                        title="Eres competente">Prof.</label>
+                                </div>
+                                <div class="form-check form-switch pt-4">
+                                    <input class="form-check-input" type="checkbox" id="eq-versatil"
+                                        onchange="document.getElementById('eq-dado2').disabled = !this.checked">
+                                    <label class="form-check-label small fw-bold" for="eq-versatil"
+                                        title="Se puede usar a 2 manos">Versátil</label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label small mb-1 text-muted">Notas (Máx. 10 pal.)</label>
+                                <input type="text" id="eq-notas" class="form-control form-control-sm"
+                                    placeholder="Ej: Plata, emite luz...">
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <label class="form-label small mb-1 text-muted">Notas (Máx. 10 pal.)</label>
-                            <input type="text" id="eq-notas" class="form-control form-control-sm"
-                                placeholder="Ej: Plata, emite luz...">
+
+                        <div class="row g-2 align-items-end p-0">
+                            <div class="col-md-3">
+                                <label class="form-label small mb-1 text-muted">Daño 1 Mano</label>
+                                <select id="eq-dado1" class="form-select form-select-sm">
+                                    <option value="1d4">1d4</option>
+                                    <option value="1d6">1d6</option>
+                                    <option value="1d8" selected>1d8</option>
+                                    <option value="1d10">1d10</option>
+                                    <option value="1d12">1d12</option>
+                                    <option value="2d6">2d6</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label small mb-1 text-muted">Daño 2 Manos</label>
+                                <select id="eq-dado2" class="form-select form-select-sm" disabled>
+                                    <option value="-">-</option>
+                                    <option value="1d4">1d4</option>
+                                    <option value="1d6">1d6</option>
+                                    <option value="1d8">1d8</option>
+                                    <option value="1d10" selected>1d10</option>
+                                    <option value="1d12">1d12</option>
+                                    <option value="2d6">2d6</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label small mb-1 text-muted">Mod. Daño Extra</label>
+                                <input type="number" id="eq-mod" class="form-control form-control-sm text-center"
+                                    value="0" title="Bono mágico o daño plano extra">
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn btn-sm btn-primary w-100 fw-bold pb-2 pt-2"
+                                    onclick="agregarEquipo()">Añadir Arma</button>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="row g-2 align-items-end p-0">
-                        <div class="col-md-3">
-                            <label class="form-label small mb-1 text-muted">Daño 1 Mano</label>
-                            <select id="eq-dado1" class="form-select form-select-sm">
-                                <option value="1d4">1d4</option>
-                                <option value="1d6">1d6</option>
-                                <option value="1d8" selected>1d8</option>
-                                <option value="1d10">1d10</option>
-                                <option value="1d12">1d12</option>
-                                <option value="2d6">2d6</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <label class="form-label small mb-1 text-muted">Daño 2 Manos</label>
-                            <select id="eq-dado2" class="form-select form-select-sm" disabled>
-                                <option value="-">-</option>
-                                <option value="1d4">1d4</option>
-                                <option value="1d6">1d6</option>
-                                <option value="1d8">1d8</option>
-                                <option value="1d10" selected>1d10</option>
-                                <option value="1d12">1d12</option>
-                                <option value="2d6">2d6</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <label class="form-label small mb-1 text-muted">Mod. Daño Extra</label>
-                            <input type="number" id="eq-mod" class="form-control form-control-sm text-center" value="0"
-                                title="Bono mágico o daño plano extra">
-                        </div>
-                        <div class="col-md-3">
-                            <button class="btn btn-sm btn-primary w-100 fw-bold pb-2 pt-2"
-                                onclick="agregarEquipo()">Añadir Arma</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="lista-gestion-equipo" class="col-12 mt-4 d-flex flex-wrap gap-2"></div>
+                    <div id="lista-gestion-equipo" class="d-flex flex-column gap-2 mt-3 w-100"></div>
+                </div> <!-- Cierra collapse equipo -->
             </div>
 
         </section>
 
-        <!-- GESTOR DE TIRADAS -->
-
-        <section id="roller-section" class="d-none">
-
-            <div class="row g-4">
-                <div class="col-md-7">
-                    <div class="bg-secondary p-4 rounded shadow h-100">
-                        <h2 class="h4 mb-4 text-gold border-bottom border-gold pb-2" style="font-family: 'Cinzel';">
-                            TIRADAS RÁPIDAS</h2>
-                        <div id="stats-grid" class="d-grid gap-3 stats-grid-responsive">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-5">
-                    <div class="bg-dark border border-gold p-4 rounded h-100 text-center position-relative shadow">
-                        <button id="btn-limpiar-log" class="btn btn-sm btn-outline-danger py-0 px-2"
-                            title="Limpiar historial">
-                            <small>Limpiar 🗑️</small>
-                        </button>
-                        <h2 class="h4 text-gold border-bottom border-secondary pb-2 mb-3">RESULTADO</h2>
-                        <div id="dice-result" class="display-1 my-4 text-gold" style="font-family: 'Cinzel';">--</div>
-                        <div id="roll-log"
-                            class="text-start mt-4 p-3 bg-black rounded overflow-auto border border-secondary"
-                            style="max-height: 280px; font-size: 0.9rem;">
-                            <p class="text-muted small text-center mt-2">El historial de tiradas aparecerá aquí...</p>
-                        </div>
-                    </div>
-                </div>
+        <!-- PANTALLA 6: PARTIDA -->
+        <section id="pantalla-partida" class="pantalla d-none">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <button class="btn btn-sm btn-outline-light" onclick="cambiarPantalla('pantalla-gestion')">⬅
+                    Salir</button>
+                <h2 class="h5 m-0 text-gold" style="font-family: 'Cinzel';">Partida en Curso</h2>
             </div>
-        </section>
 
-        <!-- GESTOR DE COMBATE -->
-
-        <section id="actions-section" class="d-none">
-            <div class="row mb-4">
+            <!-- CABECERA CONSTANTE DE PARTIDA -->
+            <div class="row mb-4" id="game-header-constant">
                 <div
-                    class="col-12 d-flex flex-wrap justify-content-between align-items-center bg-secondary p-3 rounded border-left-clase shadow-sm gap-3">
-                    <h2 class="h4 mb-0 text-gold" style="font-family: 'Cinzel';">Panel de Combate</h2>
+                    class="col-12 d-flex flex-wrap justify-content-between align-items-center bg-secondary p-3 rounded border border-gold shadow-sm gap-3">
 
-                    <div class="d-flex flex-wrap align-items-center justify-content-center gap-4">
-                        <div class="text-center">
+                    <div class="d-flex flex-wrap justify-content-center align-items-center gap-3 w-100">
+                        <div class="text-center bg-dark bg-opacity-25 rounded p-2 px-3 border border-secondary">
                             <span class="small text-muted d-block fw-bold"
                                 style="font-size: 0.65rem; letter-spacing: 1px;">ARMADURA</span>
-                            <span class="badge bg-dark border border-info fs-5 p-2" id="display-ca"
+                            <span class="badge bg-dark border border-info fs-5 p-2 mt-1" id="display-ca"
                                 title="Clase de Armadura">🛡️ 10</span>
                         </div>
 
-                        <div class="text-center px-3 border-start border-end border-secondary border-opacity-50">
+                        <div class="text-center bg-dark bg-opacity-25 rounded p-2 px-3 border border-secondary">
                             <span class="small text-muted d-block fw-bold"
                                 style="font-size: 0.65rem; letter-spacing: 1px;">SALUD</span>
-                            <div class="d-flex align-items-center gap-2 mt-1">
+                            <div class="d-flex align-items-center justify-content-center gap-2 mt-1">
                                 <button class="btn btn-sm btn-outline-danger py-0 px-2 fs-5"
                                     onclick="cambiarHP(-1)">-</button>
                                 <span class="fs-4 fw-bold text-danger" id="display-hp"
@@ -299,32 +427,52 @@
                             </div>
                         </div>
 
-                        <div class="d-flex flex-column align-items-center">
+                        <!-- NUEVO: DESCANSOS -->
+                        <div class="text-center bg-dark bg-opacity-25 rounded p-2 px-3 border border-secondary">
                             <span class="small text-muted d-block fw-bold"
-                                style="font-size: 0.65rem; letter-spacing: 1px;">INSP.</span>
-                            <label class="insp-star-toggle m-0 mt-1 position-relative" title="Inspiración Heroica" style="cursor: pointer;">
-                                <input type="checkbox" id="check-inspiracion-actions" class="d-none"
-                                    onchange="personaje.inspiracion = this.checked; actualizarIndicadorInspiracion()">
-                                <!-- SVG Estrella Vacía / Llena -->
-                                <svg class="insp-star" width="28" height="28" viewBox="0 0 24 24" fill="transparent" stroke="var(--dnd-gold)" stroke-width="2" stroke-linejoin="round">
-                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                </svg>
-                            </label>
+                                style="font-size: 0.65rem; letter-spacing: 1px;">DESCANSOS</span>
+                            <div class="d-flex align-items-center justify-content-center gap-2 mt-1">
+                                <button class="btn btn-sm btn-outline-info p-1 px-2" title="Descanso Corto"
+                                    onclick="descansoCortoUI()">☕ Corto</button>
+                                <button class="btn btn-sm btn-outline-primary p-1 px-2" title="Descanso Largo"
+                                    onclick="descansoLargo()">🛌 Largo</button>
+                            </div>
+                            <small class="text-info mt-1 d-block fw-bold" id="display-hd"
+                                style="font-size: 0.7rem;">Dados: 1/1 (d8)</small>
                         </div>
                     </div>
 
-                    <div class="d-flex align-items-center gap-3 border-start border-secondary ps-3">
-                        <div class="form-check form-switch m-0">
-                            <input class="form-check-input" type="checkbox" id="check-adv-actions"
-                                style="transform: scale(1.2);">
-                            <label class="form-check-label text-success ms-1 fw-bold small"
-                                for="check-adv-actions">VENTAJA</label>
+                    <div class="d-flex flex-wrap justify-content-center align-items-center gap-3 w-100 mt-2">
+                        <div
+                            class="d-flex flex-column align-items-center bg-dark bg-opacity-25 rounded p-2 px-3 border border-secondary">
+                            <span class="small text-muted d-block fw-bold"
+                                style="font-size: 0.65rem; letter-spacing: 1px;">INSP.</span>
+                            <label class="insp-star-toggle m-0 mt-1 position-relative" title="Inspiración Heroica"
+                                style="cursor: pointer;">
+                                <input type="checkbox" id="check-inspiracion-actions" class="d-none"
+                                    onchange="personaje.inspiracion = this.checked; actualizarIndicadorInspiracion()">
+                                <svg class="insp-star" width="28" height="28" viewBox="0 0 24 24" fill="transparent"
+                                    stroke="var(--dnd-gold)" stroke-width="2" stroke-linejoin="round">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                    </polygon>
+                                </svg>
+                            </label>
                         </div>
-                        <div class="form-check form-switch m-0">
-                            <input class="form-check-input" type="checkbox" id="check-dis-actions"
-                                style="transform: scale(1.2);">
-                            <label class="form-check-label text-danger ms-1 fw-bold small"
-                                for="check-dis-actions">DESVENTAJA</label>
+                        <div
+                            class="d-flex flex-column gap-1 bg-dark bg-opacity-25 rounded p-2 px-3 border border-secondary">
+                            <div class="form-check form-switch m-0 d-flex gap-2">
+                                <input class="form-check-input flex-shrink-0" type="checkbox" id="check-adv-actions"
+                                    style="transform: scale(1.1); margin-top:2px;">
+                                <label class="form-check-label text-success fw-bold small flex-grow-1 text-start"
+                                    for="check-adv-actions">VENTAJA</label>
+                            </div>
+                            <div class="form-check form-switch m-0 d-flex gap-2">
+                                <input class="form-check-input flex-shrink-0" type="checkbox" id="check-dis-actions"
+                                    style="transform: scale(1.1); margin-top:2px;">
+                                <label class="form-check-label text-danger fw-bold small flex-grow-1 text-start"
+                                    for="check-dis-actions">DESVENTAJA</label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -336,154 +484,221 @@
                 </div>
             </div>
 
-            <div class="row g-4">
-                <div class="col-md-7">
+            <!-- SUB-NAVEGACION DE PARTIDA -->
+            <nav class="d-flex justify-content-center flex-wrap gap-2 mb-4 bg-dark p-2 rounded shadow-sm border border-secondary">
+                <button id="btn-partida-roller" class="btn btn-sm btn-outline-gold active fw-bold"
+                    onclick="mostrarVistaPartida('roller')">🎲 Atributos y Tiradas</button>
+                <button id="btn-partida-actions" class="btn btn-sm btn-outline-gold fw-bold"
+                    onclick="mostrarVistaPartida('actions')">⚔️ Acciones (Combate)</button>
+                <button id="btn-partida-spellbook" class="btn btn-sm btn-outline-gold fw-bold"
+                    onclick="mostrarVistaPartida('spellbook')">📖 Grimorio</button>
+            </nav>
 
-                    <div class="d-flex justify-content-center gap-2 mb-4 border-bottom border-secondary pb-3">
-                        <button class="btn btn-outline-gold btn-sm fw-bold active" id="btn-tab-ataques"
-                            onclick="toggleCombateTab('ataques')">⚔️ Armas y Ataques</button>
-                        <button class="btn btn-outline-gold btn-sm fw-bold" id="btn-tab-conjuros"
-                            onclick="toggleCombateTab('conjuros')">✨ Grimorio y Slots</button>
-                    </div>
+            <!-- GESTOR DE TIRADAS -->
+            <div id="game-view-roller" class="game-view">
 
-                    <div id="panel-ataques">
-                        <div id="lista-equipo" class="d-grid gap-2"></div>
-                    </div>
-
-                    <div id="panel-conjuros" class="d-none">
-                        <p class="text-muted small text-center mb-4">Usa los botones <strong>+</strong> y
-                            <strong>-</strong> para gastar o recuperar slots. Cambia el número de la caja derecha para
-                            fijar tus slots máximos.
-                        </p>
-                        <div id="panel-conjuros-contenido"></div>
-
-                        <div class="text-center mt-3 mb-4 border-top border-secondary pt-3">
-                            <button class="btn btn-sm btn-outline-info fw-bold shadow-sm" onclick="añadirNivelSlot()">+
-                                Mostrar Siguiente Nivel Mágico</button>
+                <div class="row g-4">
+                    <div class="col-md-7">
+                        <div class="bg-secondary p-4 rounded shadow h-100">
+                            <h2 class="h4 mb-4 text-gold border-bottom border-gold pb-2" style="font-family: 'Cinzel';">
+                                TIRADAS RÁPIDAS</h2>
+                            <div id="stats-grid" class="d-grid gap-3 stats-grid-responsive">
+                            </div>
                         </div>
                     </div>
 
-                </div>
-
-                <div class="col-md-5">
-                    <div class="bg-dark border border-gold p-4 rounded h-100 text-center position-relative shadow">
-                        <button id="btn-limpiar-log-actions" class="btn btn-sm btn-outline-danger py-0 px-2"
-                            title="Limpiar historial">
-                            <small>Limpiar 🗑️</small>
-                        </button>
-                        <h2 class="h4 text-gold border-bottom border-secondary pb-2 mb-3">RESULTADO</h2>
-                        <div id="dice-result-actions" class="display-1 my-4 text-gold" style="font-family: 'Cinzel';">--
-                        </div>
-                        <div id="roll-log-actions"
-                            class="text-start mt-4 p-3 bg-black rounded overflow-auto border border-secondary"
-                            style="max-height: 280px; font-size: 0.9rem;">
-                            <p class="text-muted small text-center mt-2">El historial de combate aparecerá aquí...</p>
+                    <div class="col-md-5">
+                        <div class="bg-dark border border-gold p-4 rounded h-100 text-center position-relative shadow">
+                            <button id="btn-limpiar-log" class="btn btn-sm btn-outline-danger py-0 px-2"
+                                title="Limpiar historial">
+                                <small>Limpiar 🗑️</small>
+                            </button>
+                            <h2 class="h4 text-gold border-bottom border-secondary pb-2 mb-3">RESULTADO</h2>
+                            <div id="dice-result" class="display-1 my-4 text-gold" style="font-family: 'Cinzel';">--
+                            </div>
+                            <div id="roll-log"
+                                class="text-start mt-4 p-3 bg-black rounded overflow-auto border border-secondary"
+                                style="max-height: 280px; font-size: 0.9rem;">
+                                <p class="text-muted small text-center mt-2">El historial de tiradas aparecerá aquí...
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- GRIMORIO -->
+            <!-- GESTOR DE COMBATE -->
 
-        <section id="spellbook-section">
+            <div id="game-view-actions" class="game-view d-none">
+                <div class="row g-4">
+                    <div class="col-md-7">
 
-            <div class="row g-3 mb-4 bg-secondary p-3 rounded align-items-center">
-                <div class="col-md-4">
-                    <label class="form-label">BUSCAR</label>
-                    <input type="text" id="buscadorNombre" class="form-control" placeholder="Ej: Bola de fuego...">
-                </div>
+                        <div class="d-flex justify-content-center gap-2 mb-4 border-bottom border-secondary pb-3">
+                            <button class="btn btn-outline-gold btn-sm fw-bold active" id="btn-tab-ataques"
+                                onclick="toggleCombateTab('ataques')">⚔️ Armas y Ataques</button>
+                            <button class="btn btn-outline-gold btn-sm fw-bold" id="btn-tab-conjuros"
+                                onclick="toggleCombateTab('conjuros')">✨ Conjuros y Slots</button>
+                        </div>
 
-                <div class="col-md-8">
-                    <label class="form-label d-block">FILTRAR POR CLASE:</label>
-                    <div id="selectorClaseBotones" class="d-flex flex-wrap gap-2">
-                        <button class="btn btn-outline-light btn-clase" data-clase="Bardo">Bardo</button>
-                        <button class="btn btn-outline-light btn-clase" data-clase="Brujo">Brujo</button>
-                        <button class="btn btn-outline-light btn-clase" data-clase="Clérigo">Clérigo</button>
-                        <button class="btn btn-outline-light btn-clase" data-clase="Druida">Druida</button>
-                        <button class="btn btn-outline-light btn-clase" data-clase="Explorador">Explorador</button>
-                        <button class="btn btn-outline-light btn-clase" data-clase="Hechicero">Hechicero</button>
-                        <button class="btn btn-outline-light btn-clase" data-clase="Mago">Mago</button>
-                        <button class="btn btn-outline-light btn-clase" data-clase="Paladín">Paladín</button>
-                        <button class="btn btn-outline-light btn-clase" data-clase="todos">Todos</button>
+                        <div id="panel-ataques">
+                            <div id="lista-equipo" class="d-grid gap-2"></div>
+                            <div id="lista-recursos" class="d-grid gap-2 mt-4"></div>
+                        </div>
+
+                        <div id="panel-conjuros" class="d-none">
+                            <p class="text-muted small text-center mb-4">Usa los botones <strong>+</strong> y
+                                <strong>-</strong> para gastar o recuperar slots. Cambia el número de la caja derecha
+                                para
+                                fijar tus slots máximos.
+                            </p>
+                            <div id="panel-conjuros-contenido"></div>
+
+                            <div class="text-center mt-3 mb-4 border-top border-secondary pt-3">
+                                <button class="btn btn-sm btn-outline-info fw-bold shadow-sm"
+                                    onclick="añadirNivelSlot()">+
+                                    Mostrar Siguiente Nivel Mágico</button>
+                            </div>
+                        </div>
+
                     </div>
-                </div>
 
-                <div class="col-12 mt-3">
-                    <div class="nivel-range-container">
-                        <label class="form-label d-flex justify-content-between">
-                            <span>RANGO DE NIVELES:</span>
-                            <span id="valorRango">0 - 9</span>
-                        </label>
-                        <div class="slider-wrapper">
-                            <div class="slider-track"></div>
-                            <input type="range" min="0" max="9" value="0" id="nivelMin" class="range-input">
-                            <input type="range" min="0" max="9" value="9" id="nivelMax" class="range-input">
+                    <div class="col-md-5">
+                        <div class="bg-dark border border-gold p-4 rounded h-100 text-center position-relative shadow">
+                            <button id="btn-limpiar-log-actions" class="btn btn-sm btn-outline-danger py-0 px-2"
+                                title="Limpiar historial">
+                                <small>Limpiar 🗑️</small>
+                            </button>
+                            <h2 class="h4 text-gold border-bottom border-secondary pb-2 mb-3">RESULTADO</h2>
+                            <div id="dice-result-actions" class="display-1 my-4 text-gold"
+                                style="font-family: 'Cinzel';">--
+                            </div>
+                            <div id="roll-log-actions"
+                                class="text-start mt-4 p-3 bg-black rounded overflow-auto border border-secondary"
+                                style="max-height: 280px; font-size: 0.9rem;">
+                                <p class="text-muted small text-center mt-2">El historial de combate aparecerá aquí...
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row g-3 mb-4 bg-secondary p-3 rounded align-items-center">
 
-                <div class="col-md-3">
-                    <label class="form-label mb-1">ORDENAR POR</label>
-                    <select id="ordenarPor" class="form-select">
-                        <option value="nombreAsc">Nombre (A-Z)</option>
-                        <option value="nombreDesc">Nombre (Z-A)</option>
-                        <option value="nivelAsc">Nivel (0 - 9)</option>
-                        <option value="nivelDesc">Nivel (9 - 0)</option>
-                    </select>
-                </div>
+            <!-- GRIMORIO -->
 
-                <div class="col-md-5 d-flex justify-content-center align-items-center gap-2">
-                    <div class="form-check form-switch pt-2 me-2">
-                        <input class="form-check-input" type="checkbox" id="filtroFavoritos">
-                        <label class="form-check-label" for="filtroFavoritos">Ver 📖</label>
+            <div id="game-view-spellbook" class="game-view d-none">
+
+                <div class="row g-3 mb-4 bg-secondary p-3 rounded align-items-center">
+                    <div class="col-md-4">
+                        <label class="form-label">BUSCAR</label>
+                        <input type="text" id="buscadorNombre" class="form-control" placeholder="Ej: Bola de fuego...">
                     </div>
-                    <button id="btnCopiar" class="btn btn-outline-light btn-sm">Copiar 📖</button>
-                    <button id="btnVaciarPreparados" class="btn btn-outline-danger btn-sm">Vaciar 📖</button>
-                </div>
 
-                <div class="col-md-4 d-flex justify-content-end align-items-center gap-2 mt-3 mt-md-0">
-                    <div class="btn-group me-2 shadow-sm" role="group" aria-label="Vista de cartas">
-                        <button
-                            class="btn btn-outline-gold btn-sm px-2 d-flex align-items-center justify-content-center"
-                            id="btn-vista-1" onclick="cambiarVistaGrid(1)" title="1 columna"
-                            style="height: 32px; width: 36px;">
-                            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor">
-                                <rect x="2" y="3" width="12" height="4" rx="1"></rect>
-                                <rect x="2" y="9" width="12" height="4" rx="1"></rect>
-                            </svg>
-                        </button>
-                        <button
-                            class="btn btn-outline-gold btn-sm active px-2 d-flex align-items-center justify-content-center"
-                            id="btn-vista-2" onclick="cambiarVistaGrid(2)" title="2 columnas"
-                            style="height: 32px; width: 36px;">
-                            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor">
-                                <rect x="2" y="2" width="5" height="5" rx="1"></rect>
-                                <rect x="9" y="2" width="5" height="5" rx="1"></rect>
-                                <rect x="2" y="9" width="5" height="5" rx="1"></rect>
-                                <rect x="9" y="9" width="5" height="5" rx="1"></rect>
-                            </svg>
-                        </button>
+                    <div class="col-md-8">
+                        <label class="form-label d-block">FILTRAR POR CLASE:</label>
+                        <div id="selectorClaseBotones" class="d-flex flex-wrap gap-2">
+                            <button class="btn btn-outline-light btn-clase" data-clase="Bardo">Bardo</button>
+                            <button class="btn btn-outline-light btn-clase" data-clase="Brujo">Brujo</button>
+                            <button class="btn btn-outline-light btn-clase" data-clase="Clérigo">Clérigo</button>
+                            <button class="btn btn-outline-light btn-clase" data-clase="Druida">Druida</button>
+                            <button class="btn btn-outline-light btn-clase" data-clase="Explorador">Explorador</button>
+                            <button class="btn btn-outline-light btn-clase" data-clase="Hechicero">Hechicero</button>
+                            <button class="btn btn-outline-light btn-clase" data-clase="Mago">Mago</button>
+                            <button class="btn btn-outline-light btn-clase" data-clase="Paladín">Paladín</button>
+                            <button class="btn btn-outline-light btn-clase" data-clase="todos">Todos</button>
+                        </div>
                     </div>
-                    <span id="contador" class="badge p-2">Hechizos: 0</span>
-                    <button id="btnLimpiar" class="btn btn-outline-light btn-sm">Limpiar Filtros</button>
+
+                    <div class="col-12 mt-3">
+                        <div class="nivel-range-container">
+                            <label class="form-label d-flex justify-content-between">
+                                <span>RANGO DE NIVELES:</span>
+                                <span id="valorRango">0 - 9</span>
+                            </label>
+                            <div class="slider-wrapper">
+                                <div class="slider-track"></div>
+                                <input type="range" min="0" max="9" value="0" id="nivelMin" class="range-input">
+                                <input type="range" min="0" max="9" value="9" id="nivelMax" class="range-input">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-3 mb-4 bg-secondary p-3 rounded align-items-center">
+
+                    <div class="col-md-3">
+                        <label class="form-label mb-1">ORDENAR POR</label>
+                        <select id="ordenarPor" class="form-select">
+                            <option value="nombreAsc">Nombre (A-Z)</option>
+                            <option value="nombreDesc">Nombre (Z-A)</option>
+                            <option value="nivelAsc">Nivel (0 - 9)</option>
+                            <option value="nivelDesc">Nivel (9 - 0)</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-5 d-flex justify-content-center align-items-center gap-2">
+                        <div class="form-check form-switch pt-2 me-2">
+                            <input class="form-check-input" type="checkbox" id="filtroFavoritos">
+                            <label class="form-check-label" for="filtroFavoritos">Ver 📖</label>
+                        </div>
+                        <button id="btnCopiar" class="btn btn-outline-light btn-sm">Copiar 📖</button>
+                        <button id="btnVaciarPreparados" class="btn btn-outline-danger btn-sm">Vaciar 📖</button>
+                    </div>
+
+                    <div class="col-md-4 d-flex justify-content-end align-items-center gap-2 mt-3 mt-md-0">
+                        <div class="btn-group me-2 shadow-sm" role="group" aria-label="Vista de cartas">
+                            <button
+                                class="btn btn-outline-gold btn-sm px-2 d-flex align-items-center justify-content-center"
+                                id="btn-vista-1" onclick="cambiarVistaGrid(1)" title="1 columna"
+                                style="height: 32px; width: 36px;">
+                                <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor">
+                                    <rect x="2" y="3" width="12" height="4" rx="1"></rect>
+                                    <rect x="2" y="9" width="12" height="4" rx="1"></rect>
+                                </svg>
+                            </button>
+                            <button
+                                class="btn btn-outline-gold btn-sm active px-2 d-flex align-items-center justify-content-center"
+                                id="btn-vista-2" onclick="cambiarVistaGrid(2)" title="2 columnas"
+                                style="height: 32px; width: 36px;">
+                                <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor">
+                                    <rect x="2" y="2" width="5" height="5" rx="1"></rect>
+                                    <rect x="9" y="2" width="5" height="5" rx="1"></rect>
+                                    <rect x="2" y="9" width="5" height="5" rx="1"></rect>
+                                    <rect x="9" y="9" width="5" height="5" rx="1"></rect>
+                                </svg>
+                            </button>
+                        </div>
+                        <span id="contador" class="badge p-2">Hechizos: 0</span>
+                        <button id="btnLimpiar" class="btn btn-outline-light btn-sm">Limpiar Filtros</button>
+                    </div>
+
                 </div>
 
+                <div id="galeria" class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+                </div>
+
+                <div class="text-center mt-5 mb-5">
+                    <button id="btnCargarMas" class="btn btn-primary btn-lg d-none">Cargar más hechizos... 🎲</button>
+                </div>
             </div>
 
-            <div id="galeria" class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-            </div>
+        </section> <!-- Fin pantalla-partida -->
 
-            <div class="text-center mt-5 mb-5">
-                <button id="btnCargarMas" class="btn btn-primary btn-lg d-none">Cargar más hechizos... 🎲</button>
-            </div>
-        </section>
+        <!-- DATOS ESTÁTICOS -->
+        <script src="js/data/clases.js"></script>
+        <script src="js/data/armas.js"></script>
+        <script src="js/data/hechizos.js"></script>
 
+        <!-- SISTEMA CORE -->
+        <script src="js/db.js"></script>
+        <script src="js/estado.js"></script>
+        <script src="js/ui.js"></script>
 
+        <!-- MÓDULOS DE SECCIÓN -->
+        <script src="js/roller.js"></script>
+        <script src="js/combate.js"></script>
+        <script src="js/grimorio.js"></script>
 
-        <script src="script.js"></script>
+        <!-- INICIALIZADOR PRINCIPAL -->
+        <script src="js/main.js"></script>
 
         <div class="modal fade" id="modalHechizo" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">

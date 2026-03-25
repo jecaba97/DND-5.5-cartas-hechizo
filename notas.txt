@@ -1,0 +1,11 @@
+1 - Gestión de cuenta (administración de usuario + gestión de personajes)
+	4. Log in
+	5. Gestor de perfil
+	6. Gestor de personajes
+2 - Edición de personajes
+	1. Cambiar el guardar por exportar a Json
+	2. Añadir un botón de guardar para incluir en la DB
+3 - Comunidad
+	3. Galería de personajes de la comunidad + botón de público/privado	
+
+
